@@ -1,5 +1,5 @@
 <?php
-$aksi="modul/mod_guru/aksi_guru.php";
+$aksi="modul/mod_siswa/aksi_siswa.php";
 $syarat=$_GET['id'];
 if ($_GET[aksi]=='tambah'){
 ?>
@@ -126,7 +126,7 @@ $row	= mysql_fetch_array($hasil);
 <!-- Article main content -->
 			<article class="col-md-12 maincontent">
 				<header class="page-header">
-					<h2 class="page-title">Data Siswa <a class='btn btn-action' title='Lihat Detail' href='data_siswa-tambah.syn'>Tambah Data</a></h2>
+					<h2 class="page-title">Data Siswa <a class='btn btn-action' title='Lihat Detail' href='data_siswa-tambah.html'>Tambah Data</a></h2>
 				</header>
 				<div class="row">
 					  <div class="col-sm-4 col-md-12">
@@ -144,13 +144,13 @@ $row	= mysql_fetch_array($hasil);
 							</thead>
 							
 							<?php 
-							$tampil=mysql_query("SELECT nis,
-																																			nama_siswa,
-																																			tempat_lahir,
-																																			DATE_FORMAT(tanggal_lahir, '%d-%m-%Y') 
-                                   		as tanggal_lahir, 
-																																			id_kelas
-																																			FROM sn_siswa");
+							$tampil=mysql_query("SELECT id_siswa,
+														nis,
+														nama_siswa,
+														tempat_lahir,
+														DATE_FORMAT(tanggal_lahir, '%d-%m-%Y') as tanggal_lahir, 
+														id_kelas
+														FROM sn_siswa");
 							while($row=mysql_fetch_array($tampil)){
 							
 							?>
@@ -161,8 +161,8 @@ $row	= mysql_fetch_array($hasil);
 							  <td><?php echo $row[tempat_lahir]; ?>, <?php echo $row[tanggal_lahir]; ?></td>
 							  <td><?php echo $row[id_kelas]; ?></td>
 							  <td width="240">
-								<a class='btn btn-success btn-sm' title='Lihat Detail' href='data_siswa-edit-<?php echo $row[id_siswa]; ?>.syn'>Edit</a>
-								<a class='btn btn-danger btn-sm' title='Lihat Detail' href='#'>Hapus</a>
+								<a class='btn btn-success btn-sm' title='Lihat Detail' href='data_siswa-edit-<?php echo $row[id_siswa]; ?>.html'>Edit</a>
+								<a class='btn btn-danger btn-sm' title='Lihat Detail' onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href='<?php echo $aksi;?>?module=siswabaru&act=hapus&id=<?php echo $row[id_siswa]; ?>'>Hapus</a>
 								</td>
 							</tr>
 							<?php }?>

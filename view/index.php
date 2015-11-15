@@ -6,7 +6,7 @@
 		?>
 		<script language='javascript'>
 			alert('Anda masih login sebagai administrator'); 
-			document.location='content/admin.syn'
+			document.location='content/admin.html'
         </script>
 		<?php 
 	}else{
@@ -46,13 +46,13 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 				<?php if ($_SESSION[level] == 'siswa'){ ?>
-					<li class="active"><a href="admin.syn">Home</a></li>
+					<li class="active"><a href="admin.html">Home</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pengelolahan Data <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="data_siswa.syn">Data Siswa</a></li>
-							<li><a href="data_guru.syn">Data Guru</a></li>
-							<li><a href="data_pelajaran.syn">Data Mata Pelajaran</a></li>
+							<li><a href="data_siswa.html">Data Siswa</a></li>
+							<li><a href="data_guru.html">Data Guru</a></li>
+							<li><a href="data_pelajaran.html">Data Mata Pelajaran</a></li>
 							
 						</ul>
 					</li>

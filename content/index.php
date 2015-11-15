@@ -34,13 +34,13 @@ error_reporting(0);
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav ">
 				<?php if ($_SESSION[level] == 'superuser'){ ?>
-					<li class="active"><a href="admin.syn">Home</a></li>
+					<li class="active"><a href="admin.html">Home</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pengelolahan Data <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="data_siswa.syn">Data Siswa</a></li>
-							<li><a href="data_guru.syn">Data Guru</a></li>
-							<li><a href="data_pelajaran.syn">Data Mata Pelajaran</a></li>
+							<li><a href="data_siswa.html">Data Siswa</a></li>
+							<li><a href="data_guru.html">Data Guru</a></li>
+							<li><a href="data_pelajaran.html">Data Mata Pelajaran</a></li>
 							
 						</ul>
 					</li>
@@ -59,11 +59,11 @@ error_reporting(0);
 						</ul>
 					</li>
 					<?php }else {
-					echo'<li class="active"><a href="guru.syn">Home</a></li>
+					echo'<li class="active"><a href="guru.html">Home</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pengelolahan Data <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="data_soal.syn">Data Soal</a></li>
+							<li><a href="data_soal.html">Data Soal</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

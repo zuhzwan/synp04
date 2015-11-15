@@ -125,7 +125,7 @@ $row	= mysql_fetch_array($hasil);
 <!-- Article main content -->
 			<article class="col-md-12 maincontent">
 				<header class="page-header">
-				<h2 class="page-title">Data Guru <a class='btn btn-action' title='Lihat Detail' href='data_guru-tambah.syn'>Tambah Data</a></h2>
+				<h2 class="page-title">Data Guru <a class='btn btn-action' title='Lihat Detail' href='data_guru-tambah.html'>Tambah Data</a></h2>
 					
 				</header>
 				<div class="row">
@@ -160,8 +160,8 @@ $row	= mysql_fetch_array($hasil);
 							  <td><?php echo $row[tempat_lahir]; ?>, <?php echo $row[tanggal_lahir]; ?></td>
 							  <td><?php echo $row[id_mp]; ?></td>
 							  <td width="240">
-								<a class='btn btn-success btn-sm' title='Lihat Detail' href='data_guru-edit-<?php echo $row[id_guru]; ?>.syn'>Edit</a>
-								<a class='btn btn-danger btn-sm' title='Lihat Detail' href='#'>Hapus</a>
+								<a class='btn btn-success btn-sm' title='Lihat Detail' href='data_guru-edit-<?php echo $row[id_guru]; ?>.html'>Edit</a>
+								<a class='btn btn-danger btn-sm' title='Lihat Detail' onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href='<?php echo $aksi;?>?module=gurubaru&act=hapus&id=<?php echo $row[id_guru];?>'>Hapus</a>
 								</td>
 							</tr>
 							<?php } ?>

@@ -7,9 +7,9 @@ $module=$_GET[module];
 $act=$_GET[act];
 
 // Hapus format
-if ($module=='sekolahbaru' AND $act=='hapus'){
-  mysql_query("DELETE FROM rb_siswa WHERE nopendaftaran='$_GET[id]'");
-  header('location:../../media.php?module=siswabaru');
+if ($module=='siswabaru' AND $act=='hapus'){
+  mysql_query("DELETE FROM sn_siswa WHERE id_siswa='$_GET[id]'");
+  header('location:../../data_siswa.html');
 }
 
 // Input format
@@ -30,7 +30,7 @@ elseif ($module=='siswabaru' AND $act=='input'){
 									   '$_POST[tgl_lahir]',
 									   '$_POST[id_kelas]')");
 								   
-		header('location:../../data_siswa.syn');
+		header('location:../../data_siswa.html');
 
 }
 

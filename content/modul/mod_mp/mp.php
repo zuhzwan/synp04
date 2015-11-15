@@ -82,7 +82,7 @@ if ($_GET[aksi]=='tambah'){
 <!-- Article main content -->
 			<article class="col-md-12 maincontent">
 				<header class="page-header">
-				<h2 class="page-title">Data Mata Pelajaran <a class='btn btn-action' title='Lihat Detail' href='data_pelajaran-tambah.syn'>Tambah Data</a></h2>
+				<h2 class="page-title">Data Mata Pelajaran <a class='btn btn-action' title='Lihat Detail' href='data_pelajaran-tambah.html'>Tambah Data</a></h2>
 					
 				</header>
 				<div class="row">

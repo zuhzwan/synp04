@@ -9,7 +9,7 @@ $act=$_GET[act];
 // Hapus format
 if ($module=='gurubaru' AND $act=='hapus'){
   mysql_query("DELETE FROM sn_guru WHERE id_guru='$_GET[id]'");
-  header('location:../../media.php?module=siswabaru');
+  header('location:../../data_guru.html');
 }
 
 // Input format
@@ -30,7 +30,7 @@ elseif ($module=='gurubaru' AND $act=='input'){
 									   '$_POST[tempat_lahir]',
 									   '$_POST[tanggal_lahir]')");
 								   
-		header('location:../../data_guru.syn');
+		header('location:../../data_guru.html');
 
 }
 elseif ($module=='gurubaru' AND $act=='update'){
@@ -43,7 +43,7 @@ elseif ($module=='gurubaru' AND $act=='update'){
 										 tanggal_lahir				= '$_POST[tanggal_lahir]' 
            where id_guru='$_POST[id_guru]'");
 								   
-		header('location:../../data_guru.syn');
+		header('location:../../data_guru.html');
 
 }
 elseif ($module=='siswabaru' AND $act=='update'){

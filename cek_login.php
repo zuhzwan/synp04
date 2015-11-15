@@ -20,7 +20,7 @@ $r=mysql_fetch_array($login);
 		$_SESSION[level]    = $r[level];
 		
 		echo "<script>window.alert('Sukses Login Sebagai Superuser.');
-					window.location='content/admin.syn'</script>";
+					window.location='content/admin.html'</script>";
 	}else{
 		echo "<script>window.alert('Username atau Password anda salah.');
 					window.location='index.html'</script>";
@@ -91,7 +91,7 @@ $r=mysql_fetch_array($login);
 		$_SESSION[level]    = 'guru';
 		
 		echo "<script>window.alert('Sukses Login Sebagai Guru.');
-					window.location='content/guru.syn'</script>";
+					window.location='content/guru.html'</script>";
 	}else{
 		echo "<script>window.alert('Username atau Password anda salah.');
 					window.location='index.html'</script>";
@@ -115,7 +115,7 @@ $r=mysql_fetch_array($login);
 		$_SESSION[level]    = 'siswa';
 		
 		echo "<script>window.alert('Sukses Login Sebagai Siswa.');
-					window.location='siswa.syn'</script>";
+					window.location='siswa.html'</script>";
 	}else{
 		echo "<script>window.alert('Username atau Password anda salah.');
 					window.location='index.html'</script>";
