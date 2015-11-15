@@ -7,44 +7,29 @@ $module=$_GET[module];
 $act=$_GET[act];
 
 // Hapus format
-if ($module=='siswabaru' AND $act=='hapus'){
-  mysql_query("DELETE FROM sn_siswa WHERE id_siswa='$_GET[id]'");
-  header('location:../../data_siswa.html');
+if ($module=='mpbaru' AND $act=='hapus'){
+  mysql_query("DELETE FROM sn_mp WHERE id_mp='$_GET[id]'");
+  header('location:../../data_pelajaran.html');
 }
 
 // Input format
-elseif ($module=='siswabaru' AND $act=='input'){
+elseif ($module=='mpbaru' AND $act=='input'){
 
-		mysql_query("INSERT INTO sn_siswa (id_siswa,
-										 nis,
-										 password,
-										 nama_siswa,
-										 tempat_lahir,
-										 tanggal_lahir,
-										 id_kelas) 
-								VALUES('',
-									   '$_POST[nis]',
-									   '$_POST[password]',
-									   '$_POST[nm_siswa]',
-									   '$_POST[tmp_lahir]',
-									   '$_POST[tgl_lahir]',
-									   '$_POST[id_kelas]')");
+		mysql_query("INSERT INTO sn_mp (id_mp,
+										 nama_mp) 
+								VALUES('$_POST[id_mp]',
+									   '$_POST[mata_pelajaran]')");
 								   
-		header('location:../../data_siswa.html');
+		header('location:../../data_pelajaran.html');
 
 }
 
-elseif ($module=='siswabaru' AND $act=='update'){
+elseif ($module=='mpbaru' AND $act=='update'){
 
-		mysql_query("UPDATE sn_siswa SET nis 				= '$_POST[nis]',
-										 password				= '$_POST[password]',
-										 nama_siswa 		= '$_POST[nama_siswa]',
-										 tempat_lahir		= '$_POST[tempat_lahir]',
-										 tanggal_lahir				= '$_POST[tanggal_lahir]', 
-										 id_kelas			= '$_POST[id_kelas]' 
-           where id_siswa='$_POST[id_siswa]'");
+		mysql_query("UPDATE sn_mp SET nama_mp 				= '$_POST[nama_mp]' 
+           where id_mp='$_POST[id_mp]'");
 								   
-		header('location:../../data_siswa.html');
+		header('location:../../data_pelajaran.html');
 
 }
 

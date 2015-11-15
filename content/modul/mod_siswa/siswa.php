@@ -71,20 +71,21 @@ $row	= mysql_fetch_array($hasil);
 				</header>
 				<div class="row">
 						
-						<form>
+						<form method='POST' action="<?php echo $aksi;?>?module=siswabaru&act=update">
 						<div class="col-lg-6 col-lg-8">
 								<div class="top-margin">
 									<label>NIS <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="<?php echo $row['id_siswa'];?>">
+									<input type="hidden" name="id_siswa" class="form-control" value="<?php echo $row['id_siswa'];?>">
+									<input type="text" name="nis" class="form-control" value="<?php echo $row['nis'];?>">
 								</div>
 								<div class="top-margin">
 									<label>Password <span class="text-danger">*</span></label>
-									<input type="password" class="form-control" value="<?php echo $row['password'];?>">
+									<input type="password" name="password" class="form-control" value="<?php echo $row['password'];?>">
 								</div>
 								
 								<div class="top-margin">
 									<label>Nama Siswa <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="<?php echo $row['nama_siswa'];?>">
+									<input type="text" name="nama_siswa" class="form-control" value="<?php echo $row['nama_siswa'];?>">
 								</div>
 									
 								</div>
@@ -93,15 +94,15 @@ $row	= mysql_fetch_array($hasil);
 								
 								<div class="top-margin">
 									<label>Tempat Lahir <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="<?php echo $row['tempat_lahir'];?>">
+									<input type="text" name="tempat_lahir" class="form-control" value="<?php echo $row['tempat_lahir'];?>">
 								</div>
 								<div class="top-margin">
 									<label>Tanggal Lahir <span class="text-danger">*</span></label>
-									<input type="date" class="form-control" value="<?php echo $row['tanggal_lahir'];?>">
+									<input type="date" name="tanggal_lahir" class="form-control" value="<?php echo $row['tanggal_lahir'];?>">
 								</div>
 								<div class="top-margin">
 									<label>Kelas <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="<?php echo $row['id_kelas'];?>">
+									<input type="text" name="id_kelas" class="form-control" value="<?php echo $row['id_kelas'];?>">
 								</div>
 								<hr>
 
@@ -110,7 +111,7 @@ $row	= mysql_fetch_array($hasil);
 										
 									</div>
 									<div class="col-lg-4 ">
-										<button class="btn btn-action" type="submit">Tambah</button>
+										<button class="btn btn-action" type="submit">Edit</button>
 									</div>
 								</div>
 								</div>
@@ -151,11 +152,12 @@ $row	= mysql_fetch_array($hasil);
 														DATE_FORMAT(tanggal_lahir, '%d-%m-%Y') as tanggal_lahir, 
 														id_kelas
 														FROM sn_siswa");
+        $noUrut = 1;
 							while($row=mysql_fetch_array($tampil)){
 							
 							?>
 							<tr>
-							  <td>1</td>
+							  <td><?php echo $noUrut;?></td>
 							  <td><?php echo $row[nis]; ?></td>
 							  <td><?php echo $row[nama_siswa]; ?></td>
 							  <td><?php echo $row[tempat_lahir]; ?>, <?php echo $row[tanggal_lahir]; ?></td>
@@ -165,7 +167,9 @@ $row	= mysql_fetch_array($hasil);
 								<a class='btn btn-danger btn-sm' title='Lihat Detail' onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href='<?php echo $aksi;?>?module=siswabaru&act=hapus&id=<?php echo $row[id_siswa]; ?>'>Hapus</a>
 								</td>
 							</tr>
-							<?php }?>
+							<?php 
+       $noUrut++;
+       }?>
 							
 						</table>
 					  </div>

@@ -1,4 +1,6 @@
 <?php
+$aksi="modul/mod_mp/aksi_mp.php";
+$syarat=$_GET['id'];
 if ($_GET[aksi]=='tambah'){
 ?>
 		<article class="col-md-12 maincontent">
@@ -8,15 +10,15 @@ if ($_GET[aksi]=='tambah'){
 				</header>
 				<div class="row">
 						
-						<form>
+						<form method='POST' action="<?php echo $aksi;?>?module=mpbaru&act=input">
 						<div class="col-lg-6 col-lg-8">
 								<div class="top-margin">
 									<label>ID <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" placeholder="IDMapel">
+									<input type="text" name="id_mp" class="form-control" placeholder="ID Mapel">
 								</div>
 								<div class="top-margin">
 									<label>Mata Pelajaran<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" placeholder="Mata Pelajaran">
+									<input type="text" name="mata_pelajaran" class="form-control" placeholder="Mata Pelajaran">
 								</div>
 								
 								<hr>
@@ -38,7 +40,10 @@ if ($_GET[aksi]=='tambah'){
 				
 			</article>
 <?php
-}elseif ($_GET[aksi]=='edit' AND $_GET[id]){
+}elseif ($_GET[aksi]=='edit' && $_GET[id]){
+$data	= "select * from sn_mp where id_mp='$syarat'";
+$hasil	= mysql_query($data);
+$row	= mysql_fetch_array($hasil);
 ?>
 <article class="col-md-12 maincontent">
 				<header class="page-header">
@@ -47,15 +52,15 @@ if ($_GET[aksi]=='tambah'){
 				</header>
 				<div class="row">
 						
-						<form>
+						<form method='POST' action="<?php echo $aksi;?>?module=mpbaru&act=update">
 						<div class="col-lg-6 col-lg-8">
 								<div class="top-margin">
 									<label>ID <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" placeholder="IDMapel">
+									<input type="text" name="id_mp" class="form-control" value="<?php echo $row['id_mp'];?>">
 								</div>
 								<div class="top-margin">
 									<label>Mata Pelajaran<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" placeholder="Mata Pelajaran">
+									<input type="text" name="nama_mp" class="form-control" value="<?php echo $row['nama_mp'];?>">
 								</div>
 								
 								<hr>
@@ -65,7 +70,7 @@ if ($_GET[aksi]=='tambah'){
 										
 									</div>
 									<div class="col-lg-4 ">
-										<button class="btn btn-action" type="submit">Tambah</button>
+										<button class="btn btn-action" type="submit">Edit</button>
 									</div>
 								</div>
 									
@@ -97,42 +102,26 @@ if ($_GET[aksi]=='tambah'){
 								<th>Aksi</th>
 								</tr>
 							</thead>
-							<tr>
-							  <td>1</td>
-							  <td>1126</td>
-							  <td>Bahasa Indonesia</td>
+							
+        <?php 
+							$tampil=mysql_query("SELECT * FROM sn_mp");
+        $noUrut = 1;
+							while($row=mysql_fetch_array($tampil)){
+							
+							?>
+        <tr>
+							  <td><?php echo $noUrut;?></td>
+							  <td><?php echo $row[id_mp];?></td>
+							  <td><?php echo $row[nama_mp];?></td>
 							  <td width="240">
-								<a class='btn btn-success btn-sm' title='Lihat Detail' href='#'>Edit</a>
-								<a class='btn btn-danger btn-sm' title='Lihat Detail' href='#'>Hapus</a>
+								<a class='btn btn-success btn-sm' title='Lihat Detail' href='data_pelajaran-edit-<?php echo $row[id_mp]; ?>.html'>Edit</a>
+								<a class='btn btn-danger btn-sm' onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href='<?php echo $aksi;?>?module=mpbaru&act=hapus&id=<?php echo $row[id_mp]; ?>'>Hapus</a>
 								</td>
 							</tr>
-							<tr>
-							  <td>2</td>
-							  <td>1127</td>
-							  <td>IPA</td>
-							 <td width="240">
-								<a class='btn btn-success btn-sm' title='Lihat Detail' href='#'>Edit</a>
-								<a class='btn btn-danger btn-sm' title='Lihat Detail' href='#'>Hapus</a>
-								</td>
-							</tr>
-							<tr>
-							  <td>3</td>
-							  <td>1128</td>
-							  <td>Matematika</td>
-							 <td width="240">
-								<a class='btn btn-success btn-sm' title='Lihat Detail' href='#'>Edit</a>
-								<a class='btn btn-danger btn-sm' title='Lihat Detail' href='#'>Hapus</a>
-								</td>
-							</tr>
-							<tr>
-							  <td>4</td>
-							  <td>1128</td>
-							  <td>Bahasa Inggris</td>
-							 <td width="240">
-								<a class='btn btn-success btn-sm' title='Lihat Detail' href='#'>Edit</a>
-								<a class='btn btn-danger btn-sm' title='Lihat Detail' href='#'>Hapus</a>
-								</td>
-							</tr>
+          <?php
+       $noUrut++;
+       } ?>
+         
 						</table>
 					  </div>
 					  </div>

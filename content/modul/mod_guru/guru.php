@@ -151,10 +151,11 @@ $row	= mysql_fetch_array($hasil);
                                    	as tanggal_lahir,
 																																			id_mp
 																																			FROM sn_guru");
+        $noUrut = 1;
 							while($row=mysql_fetch_array($tampil)){
 							?>
 							<tr>
-							  <td>1</td>
+							  <td><?php echo $noUrut;?></td>
 							  <td><?php echo $row[nuptk]; ?></td>
 							  <td><?php echo $row[nama_guru]; ?></td>
 							  <td><?php echo $row[tempat_lahir]; ?>, <?php echo $row[tanggal_lahir]; ?></td>
@@ -164,7 +165,9 @@ $row	= mysql_fetch_array($hasil);
 								<a class='btn btn-danger btn-sm' title='Lihat Detail' onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" href='<?php echo $aksi;?>?module=gurubaru&act=hapus&id=<?php echo $row[id_guru];?>'>Hapus</a>
 								</td>
 							</tr>
-							<?php } ?>
+							<?php 
+       $noUrut++;
+       } ?>
 						
 						</table>
 					  </div>
